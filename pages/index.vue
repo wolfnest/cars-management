@@ -1,8 +1,10 @@
 <template>
-  <v-container>
+  <div>
     <v-row justify="center" align="center">
       <v-col cols="12" class="text-center">
-        <h1 class="text-h2 font-weight-bold mb-4">Car Management System</h1>
+        <h1 class="text-h2 font-weight-bold mb-4">
+          Car Care Management System
+        </h1>
         <v-btn
           color="primary"
           size="large"
@@ -11,6 +13,15 @@
           class="mt-4"
         >
           Create Random Car
+        </v-btn>
+        <v-btn
+          color="primary"
+          size="large"
+          :loading="loading"
+          @click="test1"
+          class="mt-4"
+        >
+          test1
         </v-btn>
         <v-snackbar
           v-model="snackbar.show"
@@ -21,7 +32,26 @@
         </v-snackbar>
       </v-col>
     </v-row>
-  </v-container>
+    <v-bottom-navigation>
+      <v-btn value="recent">
+        <v-icon>mdi-history</v-icon>
+
+        <span>Recent</span>
+      </v-btn>
+
+      <v-btn value="favorites">
+        <v-icon>mdi-heart</v-icon>
+
+        <span>Favorites</span>
+      </v-btn>
+
+      <v-btn value="nearby">
+        <v-icon>mdi-map-marker</v-icon>
+
+        <span>Nearby</span>
+      </v-btn>
+    </v-bottom-navigation>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -32,7 +62,9 @@ const snackbar = ref({
   text: "",
   color: "success",
 });
-
+const test1 = () => {
+  alert("hello world");
+};
 const createRandomCar = async () => {
   loading.value = true;
   try {
