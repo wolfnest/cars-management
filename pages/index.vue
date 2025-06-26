@@ -1,28 +1,25 @@
 <template>
-  <div>
-    <v-row justify="center" align="center">
+  <div class="main-container">
+    <!-- Background image with blur effect -->
+    <div class="background-image"></div>
+
+    <v-row justify="center" align="center" class="content-wrapper">
       <v-col cols="12" class="text-center">
-        <h1 class="text-h2 font-weight-bold mb-4">
+        <h1 class="text-h2 font-weight-bold mb-4 header-title">
           Car Care Management System
         </h1>
+
+        <!-- Login Button -->
         <v-btn
-          color="primary"
+          color="orange-darken-2"
           size="large"
-          :loading="loading"
-          @click="createRandomCar"
-          class="mt-4"
+          variant="elevated"
+          class="login-btn mb-6"
+          prepend-icon="mdi-login"
         >
-          Create Random Car
+          Login
         </v-btn>
-        <v-btn
-          color="primary"
-          size="large"
-          :loading="loading"
-          @click="test1"
-          class="mt-4"
-        >
-          test1
-        </v-btn>
+
         <v-snackbar
           v-model="snackbar.show"
           :color="snackbar.color"
@@ -32,25 +29,6 @@
         </v-snackbar>
       </v-col>
     </v-row>
-    <v-bottom-navigation>
-      <v-btn value="recent">
-        <v-icon>mdi-history</v-icon>
-
-        <span>Recent</span>
-      </v-btn>
-
-      <v-btn value="favorites">
-        <v-icon>mdi-heart</v-icon>
-
-        <span>Favorites</span>
-      </v-btn>
-
-      <v-btn value="nearby">
-        <v-icon>mdi-map-marker</v-icon>
-
-        <span>Nearby</span>
-      </v-btn>
-    </v-bottom-navigation>
   </div>
 </template>
 
@@ -91,6 +69,63 @@ const createRandomCar = async () => {
 </script>
 
 <style scoped>
+.main-container {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(8px);
+  transform: scale(1.1);
+  z-index: -1;
+}
+
+.content-wrapper {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.header-title {
+  color: #ff8c00 !important;
+  font-size: 4.5rem !important;
+  font-weight: 300 !important;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 2px;
+  margin-bottom: 2rem !important;
+  line-height: 1.1;
+  text-transform: none;
+}
+
+.login-btn {
+  background: linear-gradient(135deg, #ff8c00, #ff4500) !important;
+  color: white !important;
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 12px 32px;
+  border-radius: 25px;
+  box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 140, 0, 0.4);
+}
+
 .v-container {
   height: 100vh;
   display: flex;

@@ -1,14 +1,6 @@
 <template>
   <v-app>
-    <div
-      style="
-        background-color: red;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      "
-    >
+    <div>
       <slot />
     </div>
   </v-app>
